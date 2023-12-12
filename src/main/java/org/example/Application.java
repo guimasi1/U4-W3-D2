@@ -8,6 +8,9 @@ import org.example.entities.EventType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
@@ -27,7 +30,9 @@ public class Application {
         // ed.deleteById(1);
         // ed.save(event2);
         // System.out.println(ed.getById(3));
-        eventHandler(scanner, ed);
+        // eventHandler(scanner, ed);
+
+        System.out.println(ed.findByQuery("Notte bianca"));
 
         em.close();
         emf.close();
@@ -99,6 +104,8 @@ public class Application {
                 firstTimeGet = false;
             }
         } while(readEvent.equals("si"));
+        System.out.println("inserisci il titolo dell'evento");
+        String title = scanner.nextLine();
         System.out.println("Event handler - quit");
     }
 
